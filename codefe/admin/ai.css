@@ -1,0 +1,185 @@
+/* ai.css - Restaurant AI Configuration Styles */
+
+.main-content {
+    margin-left: 260px;
+    padding-top: 64px;
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Custom Variables & Utilities */
+.fw-800 { font-weight: 800; }
+.smaller { font-size: 0.75rem; }
+.italic { font-style: italic; }
+.leading-relaxed { line-height: 1.6; }
+
+/* AI Base Card */
+.ai-card {
+    background: var(--surface-container);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.3s ease;
+    border: 1px solid var(--outline-variant);
+}
+
+.ai-card:hover {
+    border-color: var(--primary);
+}
+
+.glass-panel {
+    background: rgba(34, 42, 61, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.bg-surface-lowest { background-color: var(--surface-container-lowest); }
+.bg-surface-highest { background-color: var(--surface-container-highest); }
+.btn-surface-high { background-color: var(--surface-container-high); }
+
+/* Badges */
+.badge-status-ai {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    background: rgba(78, 222, 163, 0.1);
+}
+
+.bg-secondary-container-soft { background: rgba(78, 222, 163, 0.1); }
+.bg-primary-container-soft { background: rgba(137, 206, 255, 0.1); }
+
+/* Upsell List Items */
+.upsell-item {
+    background: var(--surface-container-lowest);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: all 0.25s ease;
+}
+
+.upsell-item:hover {
+    background: var(--surface-container-high);
+    transform: translateX(8px);
+    border-color: rgba(137, 206, 255, 0.2);
+}
+
+.food-img-wrapper {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.food-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Pairings Section */
+.pairing-card {
+    background: var(--surface-container-low);
+    height: 100%;
+    transition: 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.pairing-card:hover {
+    transform: translateY(-8px);
+    background: var(--surface-container-high);
+    border-color: rgba(137, 206, 255, 0.15);
+}
+
+.avatar-stack {
+    display: flex;
+    padding-left: 10px;
+}
+
+.avatar-stack img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid var(--surface-container-low);
+    margin-left: -12px;
+    object-fit: cover;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+}
+
+.badge-hint {
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-align: center;
+    background: rgba(137, 206, 255, 0.08);
+}
+
+/* Neural Progress & Glow */
+.progress {
+    overflow: visible; /* Để ánh sáng shadow tỏa ra ngoài */
+    background-color: var(--surface-container-highest) !important;
+}
+
+.shadow-glow-primary {
+    box-shadow: 0 0 15px rgba(137, 206, 255, 0.6);
+    position: relative;
+}
+
+.shadow-glow-secondary {
+    box-shadow: 0 0 15px rgba(78, 222, 163, 0.6);
+    position: relative;
+}
+
+/* Hiệu ứng quét sáng chạy dọc thanh progress (AI feel) */
+.progress-bar::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: scan 2s infinite;
+}
+
+@keyframes scan {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* CSS Bar Chart */
+.chart-container {
+    height: 250px;
+    border-bottom: 1px solid var(--outline-variant);
+    align-items: flex-end;
+    padding-bottom: 10px;
+}
+
+.bar-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50px;
+}
+
+.bar {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: help;
+}
+
+.bar:hover {
+    filter: brightness(1.2);
+    transform: scaleX(1.05);
+}
+
+.bar-label {
+    font-size: 10px;
+    margin-top: 12px;
+    color: var(--outline);
+    font-weight: 600;
+}
+
+/* Rounded Utilities */
+.rounded-5 { border-radius: 2rem !important; }
+
+/* Responsive */
+@media (max-width: 1199px) {
+    .main-content { margin-left: 0; padding: 1rem; padding-top: 80px; }
+}

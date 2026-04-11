@@ -1,0 +1,70 @@
+:root {
+    --orange-main: #FF6B35;
+    --gray-light: #F1F1F1;
+}
+
+body { font-family: 'Segoe UI', sans-serif; }
+.text-orange { color: var(--orange-main); }
+.btn-orange { background-color: var(--orange-main); color: white; border-radius: 8px; }
+
+.text-orange { color: var(--orange-main) !important; }
+.btn-orange { background-color: var(--orange-main); color: white; border-radius: 8px; font-size: 14px; }
+.btn-orange:hover { background-color: #e85a25; color: white; }
+
+/* Navbar */
+.nav-link { color: #333; font-weight: 500; font-size: 15px; }
+.nav-link.active { color: var(--orange-main) !important; }
+.user-avatar-small { width: 32px; height: 32px; background: #9b59b6; border-radius: 50%; }
+
+
+/* Nền và Hiệu ứng Glassmorphism */
+.history-wrapper {
+    min-height: 90vh;
+    background: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070') center/cover no-repeat;
+    position: relative;
+}
+
+.history-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+}
+
+/* Bộ lọc (ALL, Đơn hàng, Đặt bàn) */
+.filter-group { background: white; border-radius: 12px; overflow: hidden; }
+.btn-orange-filter { background-color: var(--orange-main); color: white; border: none; }
+.btn-light-filter { background-color: white; color: #333; border: none; border-left: 1px solid #eee; }
+
+/* Custom Table */
+.custom-table thead {
+    background-color: #D9D9D9;
+}
+.custom-table th { padding: 20px; text-align: center; }
+.custom-table td { padding: 15px; text-align: center; background: white; border-bottom: 1px solid #eee; }
+
+/* Trạng thái (Badge) */
+.badge {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+.badge-done { background-color: #D9D9D9; color: #777; } /* Xám */
+.badge-process { background-color: #FFB800; color: white; } /* Vàng */
+.badge-cancel { background-color: #D9D9D9; color: #777; } /* Xám */
+
+/* Nút Xem chi tiết */
+.btn-outline-danger {
+    color: var(--orange-main);
+    border-color: #FFB195;
+    border-radius: 8px;
+}
+.btn-outline-danger:hover { background-color: var(--orange-main); border-color: var(--orange-main); }
+
+/* Floating Icons */
+.floating-contact { position: fixed; left: 20px; bottom: 30px; display: flex; flex-direction: column; gap: 10px; }
+.contact-circle { 
+    width: 45px; height: 45px; border-radius: 50%; background: white; 
+    display: flex; align-items: center; justify-content: center; shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.contact-circle.facebook { background: #1877F2; color: white; }
+.contact-circle.map { color: #EA4335; }

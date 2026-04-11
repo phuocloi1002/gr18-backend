@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản lý Thực đơn | Restaurant AI</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <link rel="stylesheet" href="datcho.css"> 
+    <link rel="stylesheet" href="siderbar.css">
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body class="bg-background">
+
+    <div id="sidebar-container"></div>
+    <div id="header-container"></div>
+
+    <main class="main-content">
+        <div class="container-fluid">
+            
+            <div class="row align-items-center mb-5 mt-2">
+    <div class="col-md-6">
+        <h2 class="page-title mb-1">Quản lý Thực đơn</h2>
+        <p class="text-secondary mb-0">Thiết kế và tối ưu hóa danh mục món ăn với sự hỗ trợ của AI.</p>
+    </div>
+    <div class="col-md-6 text-md-end mt-3 mt-md-0 d-flex justify-content-md-end gap-2">
+        <button class="btn btn-primary rounded-pill px-4 py-2 fw-bold d-inline-flex align-items-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined fs-5">edit_attributes</span> 
+            <span>Sửa danh mục</span>
+        </button>
+
+        <button onclick="openCreateModal()" class="btn btn-primary rounded-pill px-4 py-2 fw-bold d-inline-flex align-items-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined">add</span> 
+            <span>Thêm món mới</span>
+        </button>
+    </div>
+</div>
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+                <div class="nav nav-pills bg-surface-container-low p-1 rounded-pill shadow-sm" id="categoryNav">
+                </div>
+                <div class="d-flex gap-3 text-secondary align-items-center">
+                    <span class="small fw-bold text-uppercase opacity-50 d-none d-sm-inline">Chế độ xem:</span>
+                    <span class="material-symbols-outlined text-primary cursor-pointer">grid_view</span>
+                    <span class="material-symbols-outlined cursor-pointer">format_list_bulleted</span>
+                </div>
+            </div>
+
+            <div class="row g-4 pb-5" id="menuContainer">
+    <!-- JS render -->
+            </div>
+
+        </div>
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="component-loader.js"></script>
+    <script src="menu.js"></script>
+
+    <div class="modal fade" id="menuModal">
+  <div class="modal-dialog">
+    <div class="modal-content p-3">
+      <h5>Thêm món</h5>
+
+      <input id="name" class="form-control mb-2" placeholder="Tên món">
+      <input id="price" class="form-control mb-2" placeholder="Giá">
+      <input id="img" class="form-control mb-2" placeholder="Link ảnh">
+      <textarea id="desc" class="form-control mb-2" placeholder="Mô tả"></textarea>
+
+      <select id="category" class="form-control mb-3"></select>
+
+      <button onclick="createItem()" class="btn btn-primary">Lưu</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

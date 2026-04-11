@@ -1,0 +1,79 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.text-orange {
+    color: #FF6B35;
+}
+
+.btn-orange {
+    background: #FF6B35;
+    border: none;
+    transition: 0.3s;
+}
+
+
+.btn-orange:hover {
+    background-color: #e55a2a;
+    color: white;
+}
+
+/* Background Hero Section */
+.hero-section {
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Form Card */
+.form-card {
+    background: white;
+    border-radius: 20px;
+    border: 10px solid rgba(255, 255, 255, 0.1); /* Hiệu ứng viền mờ như ảnh */
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #FF6B35;
+}
+
+/* Feature boxes */
+.feature-item {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    width: fit-content;
+    min-width: 250px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Floating icons */
+.social-floating {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.social-floating a {
+    background: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Responsive fixes */
+@media (max-width: 991px) {
+    .feature-item {
+        margin: 0 auto;
+    }
+    .hero-section {
+        padding: 50px 0;
+    }
+}

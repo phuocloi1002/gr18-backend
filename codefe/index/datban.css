@@ -1,0 +1,101 @@
+:root {
+    --orange-main: #FF6B35;
+    --gray-bg: rgba(255, 255, 255, 0.95);
+}
+
+.text-orange { color: var(--orange-main) !important; }
+.btn-orange { background-color: var(--orange-main); color: white; border-radius: 8px; font-size: 14px; }
+.btn-orange:hover { background-color: #e85a25; color: white; }
+
+/* Navbar */
+.nav-link { color: #333; font-weight: 500; font-size: 15px; }
+.nav-link.active { color: var(--orange-main) !important; }
+.user-avatar-small { width: 32px; height: 32px; background: #9b59b6; border-radius: 50%; }
+
+/* Nền toàn trang có ảnh */
+.booking-wrapper {
+    min-height: 100vh;
+    background: url('/img/restaurant-bg.jpg') center/cover no-repeat; /* Thay bằng ảnh nhà hàng thực tế */
+    position: relative;
+    padding: 20px;
+}
+
+.booking-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+}
+
+/* Card Đặt bàn */
+.booking-card {
+    background: var(--gray-bg);
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.booking-visual-box {
+    background: white;
+    border-radius: 20px;
+}
+
+/* Custom Input Group */
+.input-group-text {
+    border: 1px solid #dee2e6;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+/* Nút đặt bàn */
+.btn-orange {
+    background-color: var(--orange-main);
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.btn-orange:hover {
+    background-color: #e85a25;
+}
+
+/* Radio Buttons (Khu vực) */
+.btn-check:checked + .btn-outline-secondary {
+    background-color: #ddd;
+    color: #333;
+    border-color: #ccc;
+}
+.btn-outline-secondary {
+    background-color: #eee;
+    border: none;
+    color: #666;
+}
+
+/* Floating Social Icons */
+.floating-socials {
+    position: fixed;
+    left: 20px;
+    bottom: 40px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.social-item {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+.social-item.zalo { background: white; }
+.social-item.zalo img { width: 30px; }
+.social-item.facebook { background: #1877F2; font-size: 20px; }
+.social-item.maps { background: #fff; color: #EA4335; font-size: 20px; }
+.social-item:hover { transform: scale(1.1); }

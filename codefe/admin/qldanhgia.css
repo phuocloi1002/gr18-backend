@@ -1,0 +1,133 @@
+/* qldanhgia.css - Restaurant AI */
+
+.main-content {
+    margin-left: 260px;
+    padding-top: 64px;
+    min-height: 100vh;
+}
+
+.fw-800 { font-weight: 800; }
+.smaller { font-size: 0.7rem; }
+.min-w-200 { min-width: 200px; }
+
+/* Sentiment Card */
+.sentiment-card {
+    background: var(--surface-container-low);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.sentiment-icon-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 8px solid var(--surface-container-high);
+    border-top-color: var(--secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Review Cards */
+.review-card {
+    background: var(--surface-container);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.review-card:hover {
+    background: var(--surface-container-high);
+    transform: translateY(-4px);
+}
+
+.review-card-special {
+    background: var(--surface-container-highest);
+    min-height: 100%;
+}
+
+.avatar-md { width: 48px; height: 48px; object-fit: cover; }
+
+/* Tags & Badges */
+.badge-ai-tag {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+}
+
+.bg-secondary-soft { background: rgba(78, 222, 163, 0.1); }
+.text-primary-soft { color: #89ceff; font-weight: 600; }
+
+.tag-sm {
+    background: var(--surface-dim);
+    color: var(--on-surface-variant);
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* AI Deep Insight Box */
+.icon-box-primary {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bg-primary-soft { background: rgba(137, 206, 255, 0.15); }
+.bg-primary-soft-dark { background: rgba(137, 206, 255, 0.05); }
+.bg-background-alt { background: var(--surface-dim); }
+
+/* Form & UI */
+.form-select-minimal {
+    background: transparent;
+    border: none;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-surface-high {
+    background: var(--surface-container-high);
+    color: var(--on-surface-variant);
+    border: none;
+}
+
+.btn-surface-high:hover {
+    background: var(--surface-variant);
+    color: white;
+}
+
+.btn-link-primary {
+    color: var(--primary);
+    font-size: 0.75rem;
+}
+
+/* Pagination */
+.page-link-dark {
+    background: var(--surface-container);
+    color: var(--outline);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px !important;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.page-item.active .page-link-dark {
+    background: var(--primary);
+    color: var(--on-primary);
+}
+
+.page-link-dark:hover:not(.active) {
+    background: var(--surface-container-high);
+}
+
+@media (max-width: 1199px) {
+    .main-content { margin-left: 0; }
+}

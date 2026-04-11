@@ -1,0 +1,81 @@
+/* Màu sắc chung */
+:root {
+    --sidebar-blue: #3259C3;
+    --orange-brand: #FF6B35;
+}
+
+body {
+    background-color: #e9ecef;
+    font-family: sans-serif;
+}
+
+.text-orange { color: var(--orange-brand); }
+
+/* Sidebar (Thanh menu bên trái) */
+/* Sidebar phong cách phác thảo */
+.sidebar-blue {
+    background-color: #3B66D1; /* Màu xanh đậm theo hình */
+    min-height: calc(100vh - 56px);
+    position: sticky;
+    top: 56px;
+}
+
+.sidebar-blue .nav-link {
+    color: white !important;
+    font-size: 15px;
+    padding: 1rem;
+    transition: background 0.2s;
+    border-radius: 0; /* Loại bỏ bo góc của link */
+}
+
+/* Hiệu ứng khi nhấn vào hoặc di chuột */
+.sidebar-blue .nav-link:hover, 
+.bg-blue-active {
+    background-color: #5585F2 !important; /* Màu xanh sáng hơn khi chọn */
+}
+
+/* Đường kẻ phân cách trắng mờ */
+.border-white-50 {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Dashboard Wrapper */
+.dashboard-wrapper {
+    min-height: 80vh;
+}
+
+/* Định dạng các ô thống kê & biểu đồ */
+.stat-card, .chart-container, .info-card {
+    background-color: #fff;
+    min-height: 120px;
+}
+
+.chart-placeholder {
+    height: 200px;
+    background: linear-gradient(transparent 90%, #eee 90%), 
+                linear-gradient(90deg, transparent 90%, #eee 90%);
+    background-size: 40px 40px; /* Tạo hình ô vuông giả làm biểu đồ */
+    border-bottom: 2px solid #333;
+}
+
+.placeholder-content {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ddd;
+}
+
+.placeholder-list {
+    margin-top: 15px;
+    height: 150px;
+    border: 1px dashed #ccc;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.logout-container {
+    margin-top: auto;
+}

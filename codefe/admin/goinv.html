@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gọi nhân viên | Restaurant AI</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="datcho.css"> 
+    <link rel="stylesheet" href="siderbar.css">
+    <link rel="stylesheet" href="goinv.css">
+</head>
+<body class="bg-background">
+
+    <div id="sidebar-container"></div>
+    <div id="header-container"></div>
+
+    <main class="main-content">
+        <div class="container-fluid px-4 pt-4 pb-5">
+            
+            <div class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-end mb-5 gap-4 mt-2">
+                <div>
+                    <h2 class="page-title mb-1">Gọi Nhân Viên</h2>
+                    <p class="text-secondary mb-0 max-w-500">Theo dõi và phản hồi nhanh chóng các yêu cầu hỗ trợ trực tiếp từ khách hàng.</p>
+                </div>
+                
+                
+            </div>
+
+            <div class="row g-4 mb-5">
+                <div class="col-12 col-xl-8">
+                    <div class="urgent-call-card rounded-5 p-4 h-100 d-flex flex-column justify-content-between border border-error-soft">
+                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
+                            <div class="d-flex align-items-start gap-4">
+                                <div class="table-urgent-number bg-error-container text-on-error-container rounded-4">
+                                    <span class="smaller fw-bold opacity-70">BÀN</span>
+                                    <h2 class="mb-0 fw-800">12</h2>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-center gap-3 mb-2">
+                                        <span class="badge bg-error-container text-on-error-container rounded-pill px-3 fw-bold smaller">KHẨN CẤP</span>
+                                        <span class="smaller text-secondary d-flex align-items-center gap-1">
+                                            <span class="material-symbols-outlined fs-6">schedule</span> 4 phút trước
+                                        </span>
+                                    </div>
+                                    <h4 class="fw-bold text-on-surface mb-1">Yêu cầu: Thanh toán</h4>
+                                    <p class="small text-light-emphasis mb-0">Khách hàng yêu cầu xuất hóa đơn đỏ cho công ty. Cần quản lý hỗ trợ.</p>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary rounded-pill px-4 py-3 fw-bold d-flex align-items-center gap-2 shadow-primary">
+                                Xử lý ngay <span class="material-symbols-outlined fs-5">arrow_forward</span>
+                            </button>
+                        </div>
+                        <div class="progress bg-error-soft mt-4" style="height: 6px; border-radius: 10px;">
+                            <div class="progress-bar bg-error" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+            <div class="request-table-card rounded-5 bg-surface-container border border-outline-variant/10 overflow-hidden shadow-sm">
+                <div class="p-4 d-flex justify-content-between align-items-center border-bottom border-outline-variant/10">
+                    <h5 class="fw-bold mb-0">Danh sách yêu cầu hiện tại</h5>
+                    <div class="filter-btns d-flex gap-2">
+                        <button class="btn btn-sm btn-surface-high text-white px-3 rounded-3">Tất cả</button>
+                        <button class="btn btn-sm text-secondary px-3">Chưa xử lý</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table custom-call-table align-middle mb-0">
+                        <thead>
+                            <tr class="smaller fw-bold text-secondary uppercase tracking-widest">
+                                <th class="ps-4">BÀN</th>
+                                <th>MỤC ĐÍCH GỌI</th>
+                                <th class="text-center">THỜI GIAN</th>
+                                <th>TRẠNG THÁI</th>
+                                <th class="text-end pe-4">HÀNH ĐỘNG</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="request-row">
+                                <td class="ps-4">
+                                    <div class="table-mini-num bg-primary-container text-primary fw-800 ai-pulse">04</div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="icon-circle-sm bg-primary-soft text-primary">
+                                            <span class="material-symbols-outlined fs-6">restaurant</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0 fw-bold small">Gọi món</p>
+                                            <p class="mb-0 smaller text-secondary">Yêu cầu thêm món khai vị</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center"><span class="smaller text-secondary-fixed-dim italic fw-bold">Vừa xong</span></td>
+                                <td><span class="badge bg-tertiary-container text-on-tertiary px-3 py-1 rounded-pill smaller fw-bold">ĐANG CHỜ</span></td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-icon-tool-success"><span class="material-symbols-outlined fs-5">done_all</span></button>
+                                </td>
+                            </tr>
+                            <tr class="request-row">
+                                <td class="ps-4">
+                                    <div class="table-mini-num bg-surface-highest text-secondary fw-800">21</div>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="icon-circle-sm bg-success-soft text-success">
+                                            <span class="material-symbols-outlined fs-6">local_drink</span>
+                                        </div>
+                                        <div>
+                                            <p class="mb-0 fw-bold small">Thêm nước</p>
+                                            <p class="mb-0 smaller text-secondary">Rượu vang Trắng • Chai 750ml</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-center"><span class="smaller text-secondary">2 phút trước</span></td>
+                                <td><span class="badge bg-tertiary-container text-on-tertiary px-3 py-1 rounded-pill smaller fw-bold">ĐANG CHỜ</span></td>
+                                <td class="text-end pe-4">
+                                    <button class="btn btn-icon-tool-success"><span class="material-symbols-outlined fs-5">done_all</span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="p-4 bg-surface-container-low border-top border-outline-variant/10 d-flex justify-content-between align-items-center">
+                    <div class="pagination-minimal d-flex gap-2">
+                        <button class="btn btn-icon-sm"><span class="material-symbols-outlined fs-6">chevron_left</span></button>
+                        <button class="btn btn-icon-sm"><span class="material-symbols-outlined fs-6">chevron_right</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="component-loader.js"></script>
+</body>
+</html>

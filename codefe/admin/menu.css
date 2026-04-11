@@ -1,0 +1,112 @@
+/* menu.css - Restaurant AI Tối ưu */
+
+/* Cấu trúc Layout */
+.main-content {
+    margin-left: 260px; /* Bằng độ rộng Sidebar */
+    padding-top: 80px;  /* Tránh Header */
+    min-height: 100vh;
+}
+
+/* Card Món ăn */
+.menu-grid-card {
+    background: var(--surface-container);
+    border: 1px solid var(--outline-variant);
+    border-radius: 1.25rem;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.menu-grid-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 35px rgba(137, 206, 255, 0.1);
+}
+
+/* Hình ảnh */
+.img-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: var(--surface-container-highest);
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-grid-card:hover .img-wrapper img {
+    transform: scale(1.1);
+}
+
+/* AI Insight Banner */
+.ai-insight-box {
+    background: linear-gradient(135deg, rgba(137, 206, 255, 0.08) 0%, rgba(0, 137, 195, 0.03) 100%);
+    border: 1px solid rgba(137, 206, 255, 0.15);
+    border-radius: 1.25rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Badge & Text */
+.ai-badge {
+    background: rgba(78, 222, 163, 0.15);
+    color: var(--secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.price-tag {
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+/* Line clamp (Giới hạn 2 dòng mô tả) */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Nút thêm mới dạng Dash */
+.border-dashed {
+    border: 2px dashed var(--outline-variant) !important;
+    background: transparent;
+    opacity: 0.6;
+}
+
+.border-dashed:hover {
+    border-color: var(--primary) !important;
+    opacity: 1;
+    background: rgba(137, 206, 255, 0.02);
+}
+
+/* Floating Action Button */
+.btn-secondary.rounded-circle {
+    width: 56px;
+    height: 56px;
+    background: var(--secondary-container);
+    border: none;
+    color: var(--on-secondary-container);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .main-content {
+        margin-left: 0;
+        padding-top: 80px;
+    }
+}
+

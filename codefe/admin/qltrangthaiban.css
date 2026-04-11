@@ -1,0 +1,74 @@
+/* --- Tối ưu màu sắc hiển thị --- */
+
+/* 1. Trạng thái: ĐANG DÙNG BỮA (Màu Xanh Dương sáng) */
+.active-table .table-number {
+    background-color: rgba(137, 206, 255, 0.2);
+    color: #89ceff; /* Primary sáng */
+}
+.active-table .badge {
+    background-color: #89ceff;
+    color: #001e2f; /* Chữ tối trên nền sáng cho dễ đọc */
+}
+.active-table .table-info {
+    color: #dae2fd; /* Chữ nội dung sáng */
+}
+
+/* 2. Trạng thái: TRỐNG (Màu xám trung tính) */
+.empty-table {
+    border: 1px solid rgba(144, 144, 151, 0.2);
+}
+.empty-table .table-number {
+    background-color: #2d3449;
+    color: #909097;
+}
+.empty-table .badge {
+    background-color: #45464d;
+    color: #c6c6cd;
+}
+.empty-table .table-info {
+    color: #909097;
+}
+
+/* 3. Trạng thái: ĐÃ ĐẶT (Màu Tím/Linh hoạt sáng) */
+.reserved-table .table-number {
+    background-color: rgba(192, 193, 255, 0.2);
+    color: #c0c1ff; /* Tertiary sáng */
+}
+.reserved-table .badge {
+    background-color: #c0c1ff;
+    color: #07006c;
+}
+.reserved-table .table-info p.fw-bold {
+    color: #ffffff; /* Tên khách hàng màu trắng nổi bật */
+}
+.reserved-table .table-info p.text-tertiary {
+    color: #c0c1ff !important;
+}
+
+/* 4. Trạng thái: CẦN DỌN (Màu Đỏ/Cam cảnh báo) */
+.cleaning-table .table-number {
+    background-color: rgba(255, 180, 171, 0.2);
+    color: #ffb4ab; /* Error sáng */
+}
+.cleaning-table .badge {
+    background-color: #ffb4ab;
+    color: #690005;
+}
+.cleaning-table .table-info {
+    color: #ffb4ab; /* Chữ cảnh báo màu đỏ nhạt */
+}
+
+/* --- Tinh chỉnh chung --- */
+.smaller {
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+}
+
+.table-status-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Biểu tượng (Icon) luôn có màu dịu để không lấn át chữ */
+.material-symbols-outlined.fs-6 {
+    opacity: 0.8;
+}

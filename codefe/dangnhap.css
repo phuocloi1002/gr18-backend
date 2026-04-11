@@ -1,0 +1,57 @@
+/* Định nghĩa màu sắc chủ đạo */
+:root {
+    --orange-color: #FF6B35;
+    --fb-color: #3b5998;
+    --manrope: 'Manrope', sans-serif;
+}
+
+/* 1. Nền trang web */
+.login-section {
+    min-height: calc(100vh - 76px);
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1470&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* 2. Thiết kế thẻ Form */
+.login-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+}
+
+/* 3. Tùy chỉnh ô Input */
+.custom-input .form-control {
+    border-radius: 0 12px 12px 0 !important;
+    padding: 10px 15px;
+}
+.custom-input .input-group-text {
+    border-radius: 12px 0 0 12px !important;
+}
+
+/* 4. Màu cam thương hiệu */
+.text-orange { color: var(--orange-color) !important; }
+.btn-orange { 
+    background-color: var(--orange-color) !important; 
+    border: none;
+    transition: 0.3s;
+}
+.btn-orange:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4); }
+
+/* 5. Nút Facebook */
+.btn-facebook { background-color: var(--fb-color); border: none; }
+
+/* 6. Sidebar Icon */
+.social-sidebar { position: absolute; bottom: 30px; left: 30px; }
+
+/* 7. TOASTR CUSTOMIZATION */
+#toast-container > .toast-success {
+    background-color: var(--orange-color) !important;
+}
+.toast {
+    font-family: var(--manrope) !important;
+    border-radius: 15px !important;
+}

@@ -1,0 +1,158 @@
+/* sodoban.css - Tinh chỉnh cho trang Sơ đồ bàn */
+
+.main-content {
+    margin-left: 260px;
+    padding-top: 64px;
+    min-height: 100vh;
+}
+
+/* Floor Plan Container */
+.canvas-container {
+    background: var(--surface-container-low);
+}
+
+.bg-surface-lowest { background-color: var(--surface-container-lowest); }
+.btn-surface-high { background-color: var(--surface-container-high); color: white; }
+
+.floor-grid {
+    background-color: var(--surface-container-lowest);
+    aspect-ratio: 16/10;
+    width: 100%;
+}
+
+/* Table Items (Absolute Map feel) */
+.table-item {
+    width: 90px;
+    height: 90px;
+    background: var(--surface-container);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.table-item:hover {
+    transform: scale(1.1);
+    background: var(--surface-container-high);
+    border-color: var(--primary);
+    z-index: 10;
+}
+
+.table-item.large { width: 180px; height: 80px; }
+.table-item.round { border-radius: 50%; width: 110px; height: 110px; }
+
+.table-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--outline);
+    margin-bottom: 2px;
+}
+
+.occupancy-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 10px;
+    color: white;
+}
+
+.entrance-bar {
+    background: rgba(137, 206, 255, 0.3);
+    width: 8px;
+    height: 100px;
+}
+
+/* QR List Section */
+.qr-manager {
+    background: var(--surface-container);
+    max-height: 500px;
+}
+
+.qr-list-item {
+    background: var(--surface-container-low);
+    border: 1px solid transparent;
+    transition: 0.2s;
+}
+
+.qr-list-item:hover {
+    background: var(--surface-container-high);
+    border-color: rgba(137, 206, 255, 0.2);
+}
+
+.qr-thumb { width: 48px; height: 48px; }
+.qr-thumb-empty {
+    width: 48px;
+    height: 48px;
+    background: var(--surface-container-highest);
+}
+
+/* AI Glass Card */
+.ai-insight-card {
+    background: rgba(34, 42, 61, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+/* Table Style */
+.custom-table-minimal thead th {
+    background: transparent;
+    border-bottom: 1px solid var(--outline-variant);
+    color: var(--outline);
+    font-size: 0.7rem;
+    padding: 1.2rem 1rem;
+    letter-spacing: 1px;
+}
+
+.custom-table-minimal tbody td {
+    padding: 1.2rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.badge.bg-success-soft {
+    background: rgba(78, 222, 163, 0.15);
+}
+
+/* UI Elements */
+.btn-icon-sm {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--surface-container-high);
+    color: var(--outline);
+    border: none;
+    transition: 0.2s;
+}
+
+.btn-icon-sm:hover { color: var(--primary); }
+
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+.btn-fab {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary) 0%, #0089c3 100%);
+    border: none;
+    color: var(--on-primary);
+    transition: 0.3s;
+    z-index: 1000;
+}
+
+.btn-fab:hover { transform: scale(1.1) rotate(5deg); box-shadow: 0 10px 25px rgba(0,0,0,0.4); }
+
+.smaller { font-size: 0.75rem; }
+.fw-800 { font-weight: 800; }
+
+/* Responsive */
+@media (max-width: 1199px) {
+    .main-content { margin-left: 0; }
+    .qr-manager { max-height: none; }
+}

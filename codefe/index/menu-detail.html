@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết món ăn - Restaurant AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/index/danhmuc.css">
+    <style>
+        .detail-img-wrap {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: #EAEAEA;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .detail-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+        .qty-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid #ddd;
+            background: #f8f8f8;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .15s;
+        }
+        .qty-btn:hover { background: #eee; }
+        .badge-category {
+            display: inline-block;
+            background: #fff3ee;
+            color: #FF6B35;
+            border: 1px solid #FF6B35;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 3px 12px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar navbar-expand-lg navbar-light bg-white px-4 py-2 sticky-top shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-orange" href="/index/home.html">
+            <i class="fa-solid fa-robot me-2"></i>Restaurant AI
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navMain">
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item"><a class="nav-link" href="/index/home.html"><i class="fa-solid fa-house me-1"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index/menu.html"><i class="fa-solid fa-utensils me-1"></i>Menu</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index/datban.html"><i class="fa-solid fa-chair me-1"></i>Đặt bàn</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/index/danhmuc.html"><i class="fa-solid fa-bars me-1"></i>Danh mục</a></li>
+<li class="nav-item"><a class="nav-link" href="/index/lichsu.html"><i class="fa-solid fa-clock-rotate-left me-1"></i>Lịch sử</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index/danhgia.html"><i class="fa-solid fa-star me-1"></i>Đánh giá</a></li>
+            </ul>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-orange px-3 d-none d-lg-inline-block" onclick="window.location.href='/index/datban.html'">Đặt bàn ngay</button>
+            <div class="user-avatar-small"></div>
+            <div class="position-relative" style="cursor:pointer" onclick="window.location.href='/index/giohang.html'">
+                <i class="fa-solid fa-cart-shopping fs-5 ms-2"></i>
+                <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                      style="display:none;font-size:10px">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="container py-4" style="max-width:900px">
+
+    <a href="/index/danhmuc.html" class="btn btn-light border rounded-pill mb-4">
+        <i class="fa-solid fa-arrow-left me-2"></i>Quay lại danh mục
+    </a>
+
+    <!-- Loading state -->
+    <div id="detail-container">
+        <p class="text-center text-muted py-5">
+            <i class="fa-solid fa-spinner fa-spin me-2"></i>Đang tải...
+        </p>
+    </div>
+
+</main>
+
+<!-- ===== TOAST ===== -->
+<div id="cart-toast" role="alert" aria-live="polite"
+     style="display:none;position:fixed;bottom:24px;right:24px;z-index:9999;
+            background:#333;color:#fff;padding:12px 20px;border-radius:8px;
+            font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,.3);max-width:300px">
+    <i class="fa-solid fa-check me-2 text-success"></i>
+    <span id="cart-toast-msg"></span>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    var CAT_LABELS = {
+        combo:'Combo ưu đãi', thit:'Thịt nướng',
+        sushi:'Sushi & Sashimi', haisam:'Hải sản', nuoc:'Đồ uống'
+    };
+
+    var _monHienTai = null;
+
+    /* ── Init ── */
+    window.onload = function () {
+        capNhatBadge();
+        var id = new URLSearchParams(window.location.search).get('id');
+        if (!id) { showError('Không có ID món ăn trong URL.'); return; }
+        fetchFromAPI(id);
+    };
+
+    /* ── Fetch from API ── */
+    function fetchFromAPI(id) {
+        fetch('http://localhost:8080/api/menu/' + encodeURIComponent(id))
+            .then(function (res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
+            .then(function (json) {
+                var item = (json && json.data) ? json.data : json;
+                _monHienTai = item;
+                // category có thể là object {id, name, slug} hoặc string
+var cat = item.category;
+                var catSlug = '';
+                if (cat && typeof cat === 'object') {
+                    catSlug = cat.slug || '';
+                } else if (typeof cat === 'string') {
+                    catSlug = cat;
+                }
+                renderDetail({
+                    id:       item.id,
+                    ten:      item.name        || item.ten      || 'Món ăn',
+                    gia:      item.price       || item.gia      || 0,
+                    category: catSlug,
+                    img:      item.imageUrl     || item.image    || '',
+                    rating:   item.avgRating    || item.rating   || 0,
+                    moTa:     item.description  || item.moTa     || 'Chưa có mô tả.'
+                });
+                document.title = (item.ten || item.name || 'Món ăn') + ' - Restaurant AI';
+            })
+            .catch(function () { showError(id); });
+    }
+
+    /* ── Render Detail ── */
+    function renderDetail(p) {
+        var giaStr = Number(p.gia).toLocaleString('vi-VN');
+        var stars  = renderStars(p.rating);
+        var catLabel = CAT_LABELS[p.category] || p.category || '';
+        var imgHtml = p.img
+            ? '<img src="' + p.img + '" alt="' + p.ten + '" onerror="this.src=\'/img/home.jpeg\'">'
+            : '<i class="fa-solid fa-bowl-food fa-4x text-muted"></i>';
+
+        document.getElementById('detail-container').innerHTML =
+            '<div class="row g-4 g-md-5 align-items-start">' +
+                '<div class="col-12 col-md-5 text-center">' +
+                    '<div class="detail-img-wrap mx-auto">' + imgHtml + '</div>' +
+                '</div>' +
+                '<div class="col-12 col-md-7">' +
+                    (catLabel ? '<span class="badge-category mb-3 d-inline-block">' + catLabel + '</span>' : '') +
+                    '<h2 class="fw-bold mb-2">' + p.ten + '</h2>' +
+                    '<div class="text-warning mb-2" style="font-size:16px">' + stars +
+                        ' <span class="text-muted small ms-1">(' + p.rating + '/5)</span>' +
+                    '</div>' +
+                    '<h4 class="fw-bold mb-3" style="color:#FF6B35">' + giaStr + ' đ</h4>' +
+                    '<p class="text-muted mb-4" style="line-height:1.7">' + p.moTa + '</p>' +
+                    '<div class="d-flex align-items-center gap-3 mb-3">' +
+                        '<span class="fw-bold">Số lượng:</span>' +
+                        '<button class="qty-btn" onclick="thayDoiSL(-1)" aria-label="Giảm">−</button>' +
+                        '<span id="sl-hien-tai" class="fw-bold fs-5" style="min-width:28px;text-align:center">1</span>' +
+                        '<button class="qty-btn" onclick="thayDoiSL(1)" aria-label="Tăng">+</button>' +
+                        '<span class="text-muted small ms-1 fw-semibold" id="detail-total">' + giaStr + ' đ</span>' +
+                    '</div>' +
+'<div class="mb-4">' +
+                        '<label class="text-muted small fw-semibold mb-1 d-block">' +
+                            '<i class="fa-solid fa-pen-to-square me-1"></i>Ghi chú <span class="fw-normal">(tuỳ chọn)</span>' +
+                        '</label>' +
+                        '<textarea id="detail-ghichu" class="form-control form-control-sm rounded-3" rows="2" maxlength="200"' +
+                            ' placeholder="VD: ít cay, không hành, thêm đá..."></textarea>' +
+                    '</div>' +
+                    '<div class="d-flex flex-wrap gap-3">' +
+                        '<button class="btn btn-orange rounded-pill px-5 py-2 fw-semibold" onclick="themVaoGio()">' +
+                            '<i class="fa-solid fa-cart-plus me-2"></i>Thêm vào giỏ hàng' +
+                        '</button>' +
+                        '<a href="/index/giohang.html" class="btn btn-light border rounded-pill px-4 py-2">' +
+                            '<i class="fa-solid fa-cart-shopping me-2"></i>Xem giỏ hàng' +
+                        '</a>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+
+        /* Store price for total calc */
+        document.getElementById('detail-container').dataset.gia = p.gia;
+    }
+
+    /* ── Show Error ── */
+    function showError(id) {
+        document.getElementById('detail-container').innerHTML =
+            '<div class="text-center py-5">' +
+                '<i class="fa-solid fa-circle-exclamation fa-3x text-muted mb-3 d-block"></i>' +
+                '<p class="text-muted">Không tìm thấy món ăn (ID: <code>' + id + '</code>).<br>' +
+                'Món có thể không tồn tại hoặc backend chưa chạy.</p>' +
+                '<a href="/index/danhmuc.html" class="btn btn-orange rounded-pill px-4">' +
+                    '<i class="fa-solid fa-arrow-left me-2"></i>Quay lại danh mục' +
+                '</a>' +
+            '</div>';
+    }
+
+    /* ── Quantity ── */
+    function thayDoiSL(delta) {
+        var el = document.getElementById('sl-hien-tai');
+        if (!el) return;
+        var newVal = Math.max(1, Math.min(99, parseInt(el.textContent) + delta));
+        el.textContent = newVal;
+        var gia = _monHienTai ? (_monHienTai.gia || _monHienTai.price || 0) : 0;
+        var totalEl = document.getElementById('detail-total');
+        if (totalEl) totalEl.textContent = Number(gia * newVal).toLocaleString('vi-VN') + ' đ';
+    }
+
+    /* ── Add to Cart ── */
+    function themVaoGio() {
+        if (!_monHienTai) return;
+        var sl  = parseInt(document.getElementById('sl-hien-tai').textContent) || 1;
+        var id  = _monHienTai.id;
+        var ten = _monHienTai.ten  || _monHienTai.name  || 'Món ăn';
+        var gia = _monHienTai.gia  || _monHienTai.price || 0;
+        var img = _monHienTai.imageUrl || _monHienTai.image || _monHienTai.img || '';
+var ghiChu = (document.getElementById('detail-ghichu')?.value || '').trim();
+
+        var cart = layGioHang();
+        var idx  = cart.findIndex(function (x) { return String(x.id) === String(id) && (x.ghiChu || '') === ghiChu; });
+        if (idx >= 0) {
+            cart[idx].soLuong += sl;
+        } else {
+            var entry = { id: id, ten: ten, gia: gia, img: img, soLuong: sl };
+            if (ghiChu) entry.ghiChu = ghiChu;
+            cart.push(entry);
+        }
+        localStorage.setItem('gioHang', JSON.stringify(cart));
+        capNhatBadge();
+        var ghiChuNote = ghiChu ? ' (' + ghiChu + ')' : '';
+        hienToast('Đã thêm ' + sl + ' "' + ten + '"' + ghiChuNote + ' vào giỏ hàng!');
+    }
+
+    /* ── Helpers ── */
+    function layGioHang() {
+        try { return JSON.parse(localStorage.getItem('gioHang')) || []; }
+        catch (e) { return []; }
+    }
+
+    function capNhatBadge() {
+        var badge = document.getElementById('cart-badge');
+        if (!badge) return;
+        var tong = layGioHang().reduce(function (s, x) { return s + (x.soLuong || 1); }, 0);
+        badge.textContent = tong > 99 ? '99+' : tong;
+        badge.style.display = tong > 0 ? 'inline-block' : 'none';
+    }
+
+    function hienToast(msg) {
+        var t    = document.getElementById('cart-toast');
+        var span = document.getElementById('cart-toast-msg');
+        if (!t || !span) return;
+        span.textContent = msg;
+        t.style.display = 'block';
+        clearTimeout(hienToast._t);
+        hienToast._t = setTimeout(function () { t.style.display = 'none'; }, 2500);
+    }
+
+    function renderStars(rating) {
+        var full  = Math.floor(rating);
+        var half  = (rating % 1) >= 0.5 ? 1 : 0;
+        var empty = 5 - full - half;
+        var s = '';
+        for (var i = 0; i < full;  i++) s += '<i class="fa-solid fa-star"></i>';
+        if (half)                        s += '<i class="fa-solid fa-star-half-stroke"></i>';
+        for (var j = 0; j < empty; j++) s += '<i class="fa-regular fa-star"></i>';
+        return s;
+    }
+</script>
+
+</body>
+</html>

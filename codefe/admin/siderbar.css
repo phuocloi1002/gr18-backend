@@ -1,0 +1,32 @@
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #0f172a, #020617);
+    color: #cbd5f5;
+    position: fixed;
+    height: 100vh;
+    padding: 20px 10px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #94a3b8;
+    padding: 10px 15px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.05);
+    color: #7cc5ff;
+}
+
+.nav-link.active {
+    background: rgba(124,197,255,0.15);
+    color: #7cc5ff;
+}
+
+.material-symbols-outlined.filled {
+    font-variation-settings: 'FILL' 1;
+}

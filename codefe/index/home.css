@@ -1,0 +1,105 @@
+:root {
+    --orange-main: #FF6B35;
+    --gray-bg: #EAEAEA;
+}
+
+body {
+    background-color: #fcfcfc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.text-orange { color: var(--orange-main) !important; }
+.btn-orange { background-color: var(--orange-main); color: white; border-radius: 8px; font-size: 14px; }
+.btn-orange:hover { background-color: #e85a25; color: white; }
+
+/* Navbar */
+.nav-link { color: #333; font-weight: 500; font-size: 15px; }
+.nav-link.active { color: var(--orange-main) !important; }
+.user-avatar-small { width: 32px; height: 32px; background: #9b59b6; border-radius: 50%; }
+
+/* Hero Placeholder */
+.hero-placeholder {
+    /* height: 450px; */
+    width: 100%;
+    background-color: var(--gray-bg);
+}
+
+/* Món ăn nổi bật */
+.section-title { font-weight: 500; letter-spacing: 2px; }
+.img-box {
+    height: 180px;
+    background-color: var(--gray-bg);
+}
+
+/* Combo Section */
+.combo-box {
+    background-color: var(--gray-bg);
+    border-radius: 4px;
+}
+.combo-img-placeholder {
+    width: 400px;
+    height: 250px;
+    background-color: #d1d1d1;
+}
+.divider {
+    height: 1px;
+    background-color: #333;
+    width: 100%;
+}
+
+/* Footer Map */
+.map-box {
+    border-radius: 4px;
+    overflow: hidden;
+    height: 200px;
+    background: #eee;
+}
+.map-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Đảm bảo hình ảnh lấp đầy khung và không bị biến dạng */
+.img-box img, 
+.hero-placeholder img, 
+.combo-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Quan trọng: Giữ tỉ lệ ảnh và lấp đầy khung */
+    display: block;
+}
+
+/* Hero Section (Banner lớn) */
+.hero-placeholder {
+    height: 450px; /* Cố định chiều cao banner như phác thảo */
+    overflow: hidden;
+    background-color: var(--gray-bg);
+}
+
+/* Khung ảnh món ăn nổi bật */
+.img-box {
+    height: 200px; /* Tăng nhẹ chiều cao cho cân đối */
+    background-color: var(--gray-bg);
+    overflow: hidden;
+    border-radius: 4px; /* Bo nhẹ góc theo phong cách hiện đại */
+}
+
+/* Khung ảnh Combo */
+.combo-img-placeholder {
+    width: 450px;
+    height: 300px;
+    background-color: #d1d1d1;
+    overflow: hidden;
+    flex-shrink: 0; /* Ngăn ảnh bị bóp méo khi màn hình nhỏ */
+}
+
+/* Hiệu ứng zoom nhẹ khi di chuột vào ảnh món ăn */
+.dish-card:hover .img-box img {
+    transform: scale(1.05);
+    transition: 0.3s;
+}
+
+.img-box img {
+    transition: 0.3s;
+}

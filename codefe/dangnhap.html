@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập - Restaurant AI</title>
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' http://localhost:8080 https://accounts.google.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; frame-src https://accounts.google.com;">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="dangnhap.css" />
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-orange" href="index.html">
+                <i class="fa-solid fa-robot me-2"></i>Restaurant AI
+            </a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-house me-1"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-utensils me-1"></i> Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-chair me-1"></i> Đặt bàn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-calendar-days me-1"></i> Lịch sử</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-orange text-white px-4 fw-bold">Đặt bàn ngay</button>
+        </div>
+    </nav>
+
+    <section class="login-section d-flex align-items-center justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5 col-xl-4">
+                    <div class="login-card p-4 shadow-lg text-center bg-white rounded-4">
+                        <h2 class="fw-bold mb-4 text-dark">Đăng Nhập</h2>
+
+                        <form id="loginForm">
+                            <div class="input-group mb-3 custom-input">
+                                <span class="input-group-text border-0 bg-light">
+                                    <i class="fa-solid fa-user text-primary"></i>
+                                </span>
+                                <input type="text" id="username" class="form-control border-0 bg-light" placeholder="Email hoặc Số điện thoại" required />
+                            </div>
+
+                            <div class="input-group mb-2 custom-input">
+                                <span class="input-group-text border-0 bg-light">
+                                    <i class="fa-solid fa-lock text-warning"></i>
+                                </span>
+                                <input type="password" id="password" class="form-control border-0 bg-light" placeholder="Mật khẩu" required />
+                            </div>
+
+                            <div class="text-end mb-4">
+                                <a href="#" class="text-orange text-decoration-none small fw-bold">Quên mật khẩu?</a>
+                            </div>
+
+                            <button type="submit" id="loginBtn" class="btn btn-orange w-100 text-white fw-bold py-2 mb-4 shadow-sm">
+                                ĐĂNG NHẬP
+                            </button>
+
+                            <div class="d-flex align-items-center mb-4">
+                                <hr class="flex-grow-1" />
+                                <span class="mx-2 text-muted small">Hoặc tiếp tục với</span>
+                                <hr class="flex-grow-1" />
+                            </div>
+
+                            <div class="row g-2 mb-4">
+                                <div class="col-12 mb-2">
+                                    <div id="g_id_onload"
+                                         data-client_id="69603544612-rb1t7phvocsqs89p8ap2sj0dtb82tbig.apps.googleusercontent.com"
+                                         data-context="signin"
+                                         data-ux_mode="popup"
+                                         data-callback="handleGoogleLogin"
+                                         data-auto_prompt="false">
+                                    </div>
+                                    <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="outline" data-text="signin_with" data-size="large" data-logo_alignment="left" data-width="100%"></div>
+                                </div>
+                                    
+                            </div>
+
+                            <p class="mb-0 text-muted">
+                                Chưa có tài khoản? <a href="dangky.html" class="text-orange fw-bold text-decoration-none">Đăng ký ngay</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="dangnhap.js"></script>
+</body>
+</html>

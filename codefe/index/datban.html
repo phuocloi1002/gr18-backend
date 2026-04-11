@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặt bàn trước - Restaurant AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/index/datban.css" />
+  </head>
+  <body>
+    <header class="navbar navbar-expand-lg navbar-light bg-white px-4 py-2 sticky-top shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold text-orange" href="/index/home.html">
+          <i class="fa-solid fa-robot me-2"></i>Restaurant AI
+        </a>
+        <div class="collapse navbar-collapse justify-content-center">
+          <ul class="navbar-nav gap-3">
+            <li class="nav-item"><a class="nav-link" href="/index/home.html"><i class="fa-solid fa-house me-1"></i>Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="/index/menu.html"><i class="fa-solid fa-utensils me-1"></i>Menu</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#"><i class="fa-solid fa-chair me-1"></i>Đặt bàn</a></li>
+            <li class="nav-item"><a class="nav-link" href="/index/danhmuc.html"><i class="fa-solid fa-bars me-1"></i>Danh mục</a></li>
+            <li class="nav-item"><a class="nav-link" href="/index/lichsu.html"><i class="fa-solid fa-clock-rotate-left me-1"></i>Lịch sử</a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa-solid fa-star me-1"></i>Đánh giá</a></li>
+          </ul>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <i class="fa-solid fa-magnifying-glass cursor-pointer"></i>
+          <button class="btn btn-orange px-3">Đặt bàn ngay</button>
+          <div class="user-avatar-small" id="userDisplay"></div>
+          <i class="fa-solid fa-cart-shopping fs-5 ms-2"></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="booking-wrapper d-flex align-items-center justify-content-center">
+      <div class="booking-overlay"></div>
+      <div class="container position-relative z-1">
+        <div class="row justify-content-center align-items-stretch g-4">
+          <div class="col-lg-5 col-md-6">
+            <div class="booking-card p-4 shadow-lg">
+              <h4 class="fw-bold mb-4">Đặt bàn trước</h4>
+
+              <form id="reservationForm">
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Ngày đặt bàn</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fa-regular fa-calendar-days text-danger"></i></span>
+                    <input type="date" id="resDate" class="form-control border-start-0 ps-0" required />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Giờ đặt bàn</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fa-regular fa-clock text-dark"></i></span>
+                    <input type="time" id="resTime" class="form-control border-start-0 ps-0" required />
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label small fw-bold">Số lượng khách</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-users text-muted"></i></span>
+                    <input type="number" id="guests" class="form-control border-start-0 ps-0" value="2" min="1" max="50" required />
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label small fw-bold">Khu vực</label>
+                  <div class="d-flex gap-2">
+                    <input type="radio" class="btn-check" name="area" id="outdoor" value="Ngoài trời" autocomplete="off" />
+                    <label class="btn btn-outline-secondary btn-sm rounded-pill px-3" for="outdoor">Ngoài trời</label>
+
+                    <input type="radio" class="btn-check" name="area" id="indoor" value="Trong nhà" autocomplete="off" checked />
+                    <label class="btn btn-outline-secondary btn-sm rounded-pill px-3" for="indoor">Trong nhà</label>
+
+                    <input type="radio" class="btn-check" name="area" id="vip" value="VIP" autocomplete="off" />
+                    <label class="btn btn-outline-secondary btn-sm rounded-pill px-3" for="vip">VIP</label>
+                  </div>
+                </div>
+
+                <div class="mb-4">
+                  <textarea id="note" class="form-control bg-light border-0" rows="3" placeholder="Ghi chú (Ví dụ: Tiệc sinh nhật, ghế trẻ em...)"></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn btn-orange w-100 py-2 fw-bold text-white shadow">Xác nhận đặt bàn</button>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 d-none d-md-block">
+            <div class="booking-visual-box shadow-lg h-100" style="background: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop') center/cover;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/index/datban.js"></script>
+  </body>
+</html>
