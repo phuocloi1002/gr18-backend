@@ -1,3 +1,5 @@
+-- Thiết kế tham chiếu / bản nháp. Schema chạy thật cho backend: Flyway trong
+-- restaurant-backend1/src/main/resources/db/migration/ (V1.0.1 …) — đồng bộ với JPA hiện tại.
 -- Restaurant DB schema (MySQL 8.0+ recommended for CHECK constraints)
 -- Charset: utf8mb4 for Vietnamese + emoji-safe text
 
